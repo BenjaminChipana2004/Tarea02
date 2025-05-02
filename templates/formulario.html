@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario para el cancer de mama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Valores</h1>
+    <form method="POST" action="/">
+        <input 
+            type="number" 
+            name="numero" 
+            min="1" 
+            max="10" 
+            required
+            placeholder="Número entre 1 y 10"
+        >
+        <button type="submit">Enviar</button>
+        <!--Se requiere añadir más inputs para cada variable-->
+    </form>
+
+    {% if resultado %}
+    <div class="resultado">
+        <!--Código a comprobar y mejorar-->
+        {{ resultado[0] }} <strong>para cáncer</strong>
+        <strong>Con una probabilidad de </strong> {{ resultado[1] }}
+    </div>
+    {% endif %}
+</body>
+</html>
