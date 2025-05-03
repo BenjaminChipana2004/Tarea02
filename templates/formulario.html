@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario para el cancer de mama</title>
+    <!--Mejorar estilo, si se puede, usar frameworks como bootstrap-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,26 +24,58 @@
         }
     </style>
 </head>
+<!--Formulario con las entradas BI-RADS, AGE, SHAPE, MARGIN y DENSITY respectivamente, necesarios para el diagnóstico-->
+<!--Mejorar diseño y orden de las entradas-->
 <body>
     <h1>Valores</h1>
     <form method="POST" action="/">
         <input 
             type="number" 
-            name="numero" 
+            name="BIRADS" 
             min="1" 
-            max="10" 
+            max="5" 
             required
-            placeholder="Número entre 1 y 10"
+            placeholder="BI-RADS"
+        >
+        <input 
+            type="number" 
+            name="AGE" 
+            min="1" 
+            max="120"
+            required
+            placeholder="Edad"
+        >
+        <input 
+            type="number" 
+            name="SHAPE" 
+            min="1" 
+            max="4" 
+            required
+            placeholder="Forma del tumor (En forma numérica)"
+        >
+        <input 
+            type="number" 
+            name="MARGIN" 
+            min="1" 
+            max="5" 
+            required
+            placeholder="Margen de masa (En forma numérica)"
+        >
+        <input 
+            type="number" 
+            name="DENSITY" 
+            min="1" 
+            max="4" 
+            required
+            placeholder="Densidad (En forma numérica)"
         >
         <button type="submit">Enviar</button>
-        <!--Se requiere añadir más inputs para cada variable-->
     </form>
-
+    <!--Diagnóstico recibido del algoritmo KNN-->
+    <!--Mejorar presentación-->
     {% if resultado %}
     <div class="resultado">
-        <!--Código a comprobar y mejorar-->
-        {{ resultado[0] }} <strong>para cáncer</strong>
-        <strong>Con una probabilidad de </strong> {{ resultado[1] }}
+        {{ resultado }}
     </div>
     {% endif %}
 </body>
